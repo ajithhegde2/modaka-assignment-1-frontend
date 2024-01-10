@@ -57,7 +57,7 @@ const [filter, setFilter] = useState({brightness:1 , contrast:1})
 
          axios
            .post(
-             'http://localhost:8000/api',
+             'https://erin-cautious-worm.cyclic.app/api',
              { blob },
              {
                headers: {
