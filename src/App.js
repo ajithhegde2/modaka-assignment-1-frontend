@@ -1,6 +1,6 @@
 
 import {  Box, Grid, Stack, Typography } from '@mui/material';
-import './App.css';
+
 import { Container, ImageContainer, InputContainer, StyledButton, StyledSlider, Symbol } from './components/styledComponents/styled';
 import { useRef, useState } from 'react';
 import axios from 'axios';
@@ -118,7 +118,7 @@ const [filter, setFilter] = useState({brightness:1 , contrast:1})
                 <img
                  ref={imageRef}
                   src={selectedImage}
-                  alt='Selected Image'
+                  alt='Selected'
                   style={{
                     filter: ` contrast(${filter.contrast}) brightness(${filter.brightness})`,
                   }}
