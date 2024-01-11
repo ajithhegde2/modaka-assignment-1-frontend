@@ -2,7 +2,7 @@
 import {  Box, Grid, Stack, Typography } from '@mui/material';
 
 import { Container, ImageContainer, InputContainer, StyledButton, StyledSlider, Symbol } from './components/styledComponents/styled';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
 
@@ -65,8 +65,12 @@ const [filter, setFilter] = useState({brightness:1 , contrast:1})
                },
              }
            )
+           .then((response) => {
+             setSelectedImage(null)
+             setFilter({ brightness: 1, contrast: 1 })
+             alert('Image Saved')
+           })
            .catch((error) => {
-             console.log(error)
              return
            })
       })
@@ -89,7 +93,27 @@ const [filter, setFilter] = useState({brightness:1 , contrast:1})
   }
  }
 
+useEffect(() => {
+if (!selectedImage) {
+  
+  axios
+    .get(
+      'https://erin-cautious-worm.cyclic.app/api',
 
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+    .then((response) => {
+      
+    })
+    .catch((error) => {
+      return
+    })
+}
+}, [selectedImage])
 
   return (
     <Stack
@@ -116,7 +140,7 @@ const [filter, setFilter] = useState({brightness:1 , contrast:1})
             <ImageContainer>
               {selectedImage && (
                 <img
-                 ref={imageRef}
+                  ref={imageRef}
                   src={selectedImage}
                   alt='Selected'
                   style={{
@@ -184,7 +208,7 @@ const [filter, setFilter] = useState({brightness:1 , contrast:1})
                 />
 
                 <Box>
-                  <StyledButton fullWidth onClick={selectImage}>
+                  <StyledButton fullWidth onClick={handleDownload}>
                     Save & Download
                   </StyledButton>
                 </Box>
@@ -194,7 +218,7 @@ const [filter, setFilter] = useState({brightness:1 , contrast:1})
         </Container>
         <Grid container marginY={4}>
           <Grid item xs={12} md={7} textAlign={'center'}>
-            <StyledButton onClick={handleDownload}>Upload File</StyledButton>
+            <StyledButton onClick={selectImage}>Upload File</StyledButton>
           </Grid>
         </Grid>
       </Stack>
