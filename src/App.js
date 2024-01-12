@@ -66,8 +66,8 @@ const file = new File([blob], selectedImage.fileName, { type: 'image/jpeg' })
 
   axios
     .post(
-      //  'https://erin-cautious-worm.cyclic.app/api',
-      'http://localhost:8000/api',
+       'https://erin-cautious-worm.cyclic.app/api',
+      // 'http://localhost:8000/api',
       {file},
       {
         headers: {
@@ -107,8 +107,8 @@ const file = new File([blob], selectedImage.fileName, { type: 'image/jpeg' })
  const getAllImages = async ()=>{
   try {
      const {data} = await axios.get(
-       // 'https://erin-cautious-worm.cyclic.app/api',
-       'http://localhost:8000/api',
+       'https://erin-cautious-worm.cyclic.app/api',
+      //  'http://localhost:8000/api',
        {
          headers: {
            'Content-Type': 'application/json',
