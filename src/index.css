@@ -21,3 +21,12 @@ img{
   max-height: 500px;
   object-fit: contain;
 }
+
+
+
+
+.displayImage {
+  max-height: 250px;
+}
+
+
